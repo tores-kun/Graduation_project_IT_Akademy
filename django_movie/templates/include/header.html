@@ -1,0 +1,59 @@
+{% load i18n movie_tag %}
+<header class="header">
+    <div class="container-fluid px-lg-5">
+        <nav class="py-4">
+            <div id="logo">
+                <h1><a href="/" class="editContent"
+                       style="outline: none; outline-offset: -2px; cursor: inherit; color: rgb(255, 255, 255); font-size: 20px; background-color: rgba(0, 0, 0, 0); font-family: Source Sans Pro;, sans-serif;">Моя Хранилка movies <br> должна быть в идеале </a>
+                </h1>
+            </div>
+            <label for="drop" class="toggle">Menu</label>
+            <input type="checkbox" id="drop">
+            <ul class="menu mt-2">
+                <li class="active"><a href="/">Главная</a></li>
+                <li class="active"><a href="/hosting/">Hosting</a></li>
+                <li>
+                    {% if user.is_authenticated %}
+                        <span>{{ user.username }}</span>
+                        <a href="{% url 'account_logout' %}"
+                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
+                            Выход
+                        </a>
+                    {% else %}
+                        <a href="{% url 'account_login' %}"
+                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
+                            Вход
+                        </a>
+                         <a href="{% url 'account_signup' %}"
+                           style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
+                            Регистрация
+                        </a>
+                    {% endif %}
+                </li>
+                <li>
+                    <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}">
+                        <select name="language">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                        selected{% endif %}>
+                                    {{ language.name_local }} ({{ language.code }})
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" value="Ok">
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div class="banner-info">
+    <p class="editContent">Сайт на высший бал</p>
+    <h3 class="mb-4 editContent">Мое кино</h3>
+    <div class="ban-buttons">
+    </div>
+</div>
