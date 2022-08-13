@@ -9,9 +9,9 @@ on:
 
 env:
   PROJECT_ID: graduation-project-it-akademy # TODO: update Google Cloud project id
-  GAR_LOCATION: us-central2 # TODO: update Artifact Registry location
+  GAR_LOCATION: europe-central2 # TODO: update Artifact Registry location
   SERVICE: graduation-project-it-akademy # TODO: update Cloud Run service name
-  REGION: us-central2 # TODO: update Cloud Run service region
+  REGION: europe-central2 # TODO: update Cloud Run service region
 
 jobs:
   deploy:
