@@ -17,4 +17,8 @@ RUN pip install -r req.txt
 
 COPY . .
 
+EXPOSE 8000
+
 ENTRYPOINT ["sh", "/usr/src/app/entrypoint.sh"]
+
+ENTRYPOINT ["sh", "/usr/src/app/prestart.sh"]
