@@ -13,7 +13,7 @@ RUN pip install --upgrade pip
 COPY ./req.txt .
 RUN pip install -r req.txt
 
-COPY ./entrypoint.sh .
+# COPY ./entrypoint.sh .
 
 COPY . .
 
