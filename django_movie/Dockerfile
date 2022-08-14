@@ -1,9 +1,11 @@
-FROM ubuntu:latest
+FROM postgres:12.0-alpine
 
 RUN mkdir -p $HOME/docker/volumes/postgres
-RUN /bin/sh -c sudo docker pull postgres
-RUN /bin/sh -c sudo docker run --rm --name baza -e POSTGRES_PASSWORD=123456 -e POSTGRES_USER=postgres -e POSTGRES_DB=db -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres
+RUN export POSTGRES_USER=postgres && \
+    export POSTGRES_PASSWORD=123456 && \
+    export POSTGRES_DB=db
 
+EXPOSE 5432
 
 FROM python:3.8.3
 
