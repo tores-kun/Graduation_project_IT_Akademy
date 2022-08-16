@@ -6,7 +6,7 @@
 
 
 provider "google" {
-  credentials = var.secrets.GCP_CREDENTIALS
+  credentials = ${{ secrets.GCP_CREDENTIALS }}
   project     = "graduation-project-it-akademy"
   region      = "us-central1"
   zone        = "us-central1-a"
