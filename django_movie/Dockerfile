@@ -1,12 +1,3 @@
-FROM postgres:12.0-alpine
-
-RUN mkdir -p $HOME/docker/volumes/postgres
-RUN export POSTGRES_USER=postgres && \
-    export POSTGRES_PASSWORD=123456 && \
-    export POSTGRES_DB=db
-
-EXPOSE 5432
-
 FROM python:3.8.3
 
 WORKDIR /usr/src/app
@@ -21,8 +12,6 @@ RUN pip install --upgrade pip
 
 COPY ./req.txt .
 RUN pip install -r req.txt
-
-# COPY ./entrypoint.sh .
 
 COPY . .
 

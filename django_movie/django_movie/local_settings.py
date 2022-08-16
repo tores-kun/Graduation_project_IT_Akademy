@@ -13,8 +13,7 @@ ALLOWED_HOSTS = [
     '192.168.1.41',
     '127.0.0.1',
     '0.0.0.0',
-    'localhost'
-    
+    'localhost',
 ]
 
 # DATABASES = {
@@ -30,8 +29,8 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': '123456',
-        'HOST': 'db',
-        'PORT': 5432
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
