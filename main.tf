@@ -6,7 +6,7 @@
 
 
 provider "google" {
-  credentials = file${{ secrets.GCP_CREDENTIALS }}
+  credentials = var.${{ secrets.GCP_CREDENTIALS }}
   project     = "graduation-project-it-akademy"
   region      = "us-central1"
   zone        = "us-central1-a"
@@ -21,10 +21,7 @@ resource "google_compute_instance" "my_server" {
     }
   }
 
-  metadata_startup_script = "sudo apt-get update \
-    && sudo wget https://github.com/tores-kun/Graduation_project_IT_Akademy.git \
-    && cd Graduation_project_IT_Akademy \
-    && cd django_movie && sudo docker_compose build && sudo docker_compose up"
+  metadata_startup_script = "sudo apt-get update && sudo wget https://github.com/tores-kun/Graduation_project_IT_Akademy.git && cd Graduation_project_IT_Akademy && cd django_movie && sudo docker_compose build && sudo docker_compose up"
 
   network_interface {
     network = "default"
